@@ -1,0 +1,87 @@
+ <body>
+    <!-- ======= Header ======= -->
+  
+    <%- include('../common/head')%>
+
+    <!-- ======= Sidebar ======= -->
+
+    <%- include ('../common/navbar')%>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Banner Page</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active">Edit Banner</li>
+        </ol>
+      </nav>
+    </div>
+  
+  <!-- End Page Title -->
+    
+    <div  class="container">
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Banner Form</h5>
+
+            <form class="row g-3" method="post" action="updatebanner<%= edit._id %>" enctype="multipart/form-data">
+
+              <div class="col-12">
+                <label for="inputNanme4" class="form-label">Sub-Title</label>
+                <input type="text" class="form-control" name="sub_title" value="<%= edit.sub_title %>">
+              </div>
+
+              <div class="col-12">
+                <label for="inputNanme4" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" value="<%= edit.title%>">
+              </div>
+
+              <div class="col-12">
+                <label for="inputNanme4" class="form-label">Sub-head</label>
+                <input type="text" class="form-control" name="sub_head" value="<%= edit.sub_head%>">
+              </div>
+
+              <div class="col-12">
+                <label for="inputNanme4" class="form-label">Image</label>
+                <input type="file" class="form-control" name="image" value="<%= edit.image%>">
+              </div>
+              
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Update</button>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+ 
+  <%- include ('../common/footer') %>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/admin/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/admin/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/admin/assets/vendor/quill/quill.min.js"></script>
+  <script src="/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/admin/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <s src="/admin/assets/js/main.js"></s
+
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<body>
+  <!-- ======= Header ======= -->
+
+  <%- include('../common/head')%>
+
+  <!-- ======= Sidebar ======= -->
+
+  <%- include ('../common/navbar')%>
+
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Guide Page</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="guide">Guide List</a></li>          
+      </ol>        
+    </nav>
+  </div>
+
+  <!-- End Page Title -->    
+        <div  class="container">
+            <a  class="btn btn-success" href="addguide">Add Guide</a><hr>          
+                
+    <button id="showdatag" class="btn btn-primary">Show</button>
+    <br /><hr>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered" id="sample_datag">
+                <thead>
+                    <tr style="align-items: center; text-align: center;">
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Sub-title</th>
+                        <th>Country</th>
+                        <th>Image</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+  
+</main>
+<!-- End #main -->
+
+<!-- ======= Footer ======= -->
+
+<%- include ('../common/footer') %> 
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/admin/assets/vendor/chart.js/chart.umd.js"></script>
+<script src="/admin/assets/vendor/echarts/echarts.min.js"></script>
+<script src="/admin/assets/vendor/quill/quill.min.js"></script>
+<script src="/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="/admin/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/admin/assets/js/main.js"></script>
+
+  <!-- jQuery library -->
+    
+  <script src= 
+  "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+  </script> 
+
+  <!-- Popper JS -->
+  <script src= 
+  "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"> 
+  </script> 
+
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+    console.log('jQuery is running');
+    // *****showdata*******//
+    $('#sample_datag').hide()
+    $('#showdatag').click(function(){
+        $('#sample_datag').show()
+        AdminShowGuide()
+    })
+    function AdminShowGuide(){
+        $.ajax({
+            type:'GET',
+            url:'/admin/showguide',
+            dataType:'json',
+            success:function(response){
+                {
+                    let showdatag=''
+                    let count=0
+                    for(let i of response.allguide){
+                        if(i.status=='1'){
+                            showdatag+=`
+                            <tr style="align-items: center; text-align: center;">
+                                <td>`+  ++count  +`</td>
+                                <td>`+ i.title +`</td>
+                                <td>`+ i.sub_title +`</td>                                
+                                <td>`+ i.country +`</td>
+                                <td style="align-items: center; text-align: center;"> <img src="/`+ i.image +`" height="50px" width="50px" alt="image"></td>
+                                <td style="align-items: center; text-align: center;"><i class="fa-solid fa-thumbs-up" style="color:green; " id='activeg' data-id='`+i._id+`'></i></td>                               
+                                //<td><button class='btn btn-danger' id='deleteg' data-id='`+i._id+`'>Delete</button></td>
+                            </tr>
+                        `
+                        }else{
+                            showdatag+=`
+                            <tr style="align-items: center; text-align: center;">
+                                <td>`+  ++count  +`</td>
+                                <td>`+ i.title +`</td>
+                                <td>`+ i.sub_title +`</td>                                
+                                <td>`+ i.country +`</td>                                
+                                <td style="align-items: center; text-align: center;"> <img src="/`+ i.image +`" height="50px" width="50px" alt="image"></td>
+                                <td style="align-items: center; text-align: center;"><i class="fa-solid fa-thumbs-down" style="color:red; " id='deactiveg' data-id='`+i._id+`'></i></td>                               
+                                //<td><button class='btn btn-danger' id='deleteg' data-id='`+i._id+`'>Delete</button></td>
+                            </tr>
+                        ` 
+                        }                      
+                    }
+                    $('#sample_datag >tbody').html(showdatag)
+                }
+            },
+        })
+    }
+    // ***deletedata*******//
+    $(document).on('click','#deleteg',function(){
+        let id=$(this).data('id')
+        console.log(id)
+        $.ajax({
+            url:'/admin/deleteguide'+id,
+            method:'GET',
+            contentType:'application/json',
+            success:function(){
+                console.log('delete data')
+                $('#showdatag').click()
+                $('#sample_datag').show()
+            }
+        })
+    })
+    // ****active******//
+    $(document).on('click','#activeg',function(){
+        let id=$(this).data('id')
+        $.ajax({
+            type:'GET',
+            url:'/admin/activeguide'+id,
+            dataType:'json',
+            success:function(){
+                console.log('deactive data')
+                $('#showdatag').click()
+                $('#sample_datag').show()
+            }
+        })
+    })
+    // ********deactive*******//
+    $(document).on('click','#deactiveg',function(){
+        let id=$(this).data('id')
+        $.ajax({
+            type:'GET',
+            url:'/admin/deactiveguide'+id,
+            dataType:'json',
+            success:function(){
+                console.log('active data')
+                $('#showdatag').click()
+                $('#sample_datag').show()
+            }
+        })
+    })
+    
+})
+
+</script>
+
+</body>
+

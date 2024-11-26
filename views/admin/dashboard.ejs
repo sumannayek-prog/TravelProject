@@ -1,0 +1,59 @@
+<body>
+  <!-- ======= Header ======= -->
+  
+  <%- include('./common/head')%>
+
+  <!-- ======= Sidebar ======= -->
+  
+  <%- include ('./common/navbar')%>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      
+      <nav>
+        <ol class="breadcrumb">
+          <!-- <li class="breadcrumb-item"><a href="../">Home</a></li> -->
+          <li class="breadcrumb-item active">List</li>
+        </ol>
+      </nav>
+      <% if(success_msg.length>0) {%>
+        <div class="alert alert-success" role="alert">
+          <%= success_msg %>
+        </div>
+        <% } %>
+        <% if(error_msg.length>0) {%>
+            <div class="alert alert-danger" role="alert">
+              <%= error_msg %>
+            </div>
+            <% } %>
+    </div>
+  
+  <!-- End Page Title -->
+
+  
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+ 
+  <%- include ('./common/footer') %>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/admin/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/admin/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/admin/assets/vendor/quill/quill.min.js"></script>
+  <script src="/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/admin/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <s src="/admin/assets/js/main.js"></s
+
+</body>
+
+</html>

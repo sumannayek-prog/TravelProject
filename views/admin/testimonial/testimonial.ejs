@@ -1,0 +1,182 @@
+<body>
+  <!-- ======= Header ======= -->
+
+  <%- include('../common/head')%>
+
+  <!-- ======= Sidebar ======= -->
+
+  <%- include ('../common/navbar')%>
+
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Testimonial Page</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="testimonial">Testimonial List</a></li>          
+      </ol>        
+    </nav>
+  </div>
+
+  <!-- End Page Title -->    
+        <div  class="container">
+          <a  class="btn btn-success" href="addtestimonial">Add Destination</a><hr>          
+                  
+    <button id="showdata" class="btn btn-primary">Show</button>
+    <br /><hr>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered" id="sample_data">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Para</th>
+                        <th>Title</th>
+                        <th>Sub-title</th>
+                        <th>Image</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+        </div>
+  
+</main>
+<!-- End #main -->
+
+<!-- ======= Footer ======= -->
+
+<%- include ('../common/footer') %> 
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/admin/assets/vendor/chart.js/chart.umd.js"></script>
+<script src="/admin/assets/vendor/echarts/echarts.min.js"></script>
+<script src="/admin/assets/vendor/quill/quill.min.js"></script>
+<script src="/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="/admin/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/admin/assets/js/main.js"></script>
+
+  <!-- jQuery library -->
+    
+  <script src= 
+  "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+  </script> 
+
+  <!-- Popper JS -->
+  <script src= 
+  "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"> 
+  </script> 
+
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+    console.log('jQuery is running');
+    // *****showdata*******//
+    $('#sample_data').hide()
+    $('#showdata').click(function(){
+        $('#sample_data').show()
+        AdminShowCatagory()
+    })
+    function AdminShowCatagory(){
+        $.ajax({
+            type:'GET',
+            url:'/admin/testimonial/show',
+            dataType:'json',
+            success:function(response){
+                {
+                    let showdata=''
+                    let count=0
+                    for(let i of response.alltest){
+                        if(i.status=='1'){
+                            showdata+=`
+                            <tr style="align-items: center; text-align: center;">
+                                <td>`+  ++count  +`</td>
+                                <td>`+ i.para +`</td>
+                                <td>`+ i.title +`</td>
+                                <td>`+ i.sub_title +`</td>                                
+                                <td style="align-items: center; text-align: center;"> <img src="/`+ i.image +`" height="50px" width="50px" alt="image"></td>
+                                <td style="align-items: center; text-align: center;"><i class="fa-solid fa-thumbs-up" style="color:green; " id='activet' data-id='`+i._id+`'></i></td>                               
+                                //<td><button class='btn btn-danger' id='deletet' data-id='`+i._id+`'>Delete</button></td>
+                            </tr>
+                          ` 
+
+                        }else{
+                          showdata+=`
+                            <tr style="align-items: center; text-align: center;">
+                                <td>`+  ++count  +`</td>
+                                <td>`+ i.para +`</td>
+                                <td>`+ i.title +`</td>
+                                <td>`+ i.sub_title +`</td>                                
+                                <td style="align-items: center; text-align: center;"> <img src="/`+ i.image +`" height="50px" width="50px" alt="image"></td>
+                                <td style="align-items: center; text-align: center;"><i class="fa-solid fa-thumbs-down" style="color:red; " id='deactivet' data-id='`+i._id+`'></i></td>                               
+                                //<td><button class='btn btn-danger' id='deletet' data-id='`+i._id+`'>Delete</button></td>
+                            </tr>
+                          ` 
+                        }                      
+                    }
+                  $('#sample_data >tbody').html(showdata)
+                }
+            },
+        })
+    }
+    // ***deletedata*******//
+    $(document).on('click','#deletet',function(){
+        let id=$(this).data('id')
+        console.log(id)
+        $.ajax({
+            url:'/admin/deletetest'+id,
+            method:'GET',
+            contentType:'application/json',
+            success:function(){
+                console.log('delete data')
+                $('#showdata').click()
+                $('#sample_data').show()
+            }
+        })
+    })
+    // ****active******//
+    $(document).on('click','#activet',function(){
+        let id=$(this).data('id')
+        $.ajax({
+            type:'GET',
+            url:'/admin/activetest'+id,
+            dataType:'json',
+            success:function(){
+                console.log('deactive data')
+                $('#showdata').click()
+                $('#sample_data').show()
+            }
+        })
+    })
+    // ********deactive*******//
+    $(document).on('click','#deactivet',function(){
+        let id=$(this).data('id')
+        $.ajax({
+            type:'GET',
+            url:'/admin/deactivetest'+id,
+            dataType:'json',
+            success:function(){
+                console.log('active data')
+                $('#showdata').click()
+                $('#sample_data').show()
+            }
+        })
+    })
+    
+})
+
+</script>
+
+</body>
+

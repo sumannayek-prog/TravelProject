@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./common/head') %>
+</head>
+
+<body>
+
+  <!-- Spinner Start -->
+
+<%- include('./common/spinner')%>
+
+  <!-- Spinner End -->
+
+  <!-- Topbar Start -->
+
+<%- include('./common/topbar')%>
+
+  <!-- Topbar End -->
+
+  <!-- Navbar & Hero Start -->
+  <div class="container-fluid position-relative p-0">
+  <%- include('./common/navbar') %>
+    </div>
+  <!-- Navbar & Hero End -->
+
+ 
+
+<!-- readmore Start -->
+<div class="container-fluid py-5" style="background: linear-gradient(rgba(19, 53, 123, 0.3), rgba(19, 53, 153, 0.3)); object-fit: cover;">
+  <div class="container py-5 text-center">
+      <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <img class="img-fluid" src="<%= allPackageData.image %>" alt="">
+              <h2 class="display-1">Country : <%= allPackageData.location %></h2>
+              <h1 class="mb-4 text-dark">Hotel : <%= allPackageData.hotel %></h1>
+              <h3 class="mb-4 text-dark">Amount : <%= allPackageData.amount %></h3>
+              <p class="mb-4 text-dark"><span style="color: white; background-color: #13357B; padding: 5px; margin: 5px; font-size: larger;">About : </span><%= allPackageData.para %></p>
+              <h3 class="mb-4 text-dark">Guide Name : <%= allPackageData.guide %></h3>
+                <!-- Button - start -->
+            <div class="container-fluid destination py-5">
+              <div class="container py-5">
+                  <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                      <h5 class="section-title px-3">More Details</h5>                      
+                  </div>
+                  <div class="tab-class text-center">
+                      <ul class="nav nav-pills d-inline-flex justify-content-center mb-5">
+                          
+                          <li class="nav-item">                        
+                              <a class="d-flex py-2 mx-3 border border-primary bg-light rounded-pill" data="pill" href="citiespageUsa">
+                                  <span class="text-dark" style="width: 150px;">USA</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data="pill" href="citiespageCan">
+                                  <span class="text-dark" style="width: 150px;">Canada</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data="pill" href="citiespageEur">
+                                  <span class="text-dark" style="width: 150px;">Europe</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data="pill" href="citiespageChi">
+                                  <span class="text-dark" style="width: 150px;">China</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data="pill" href="citiespageSingp">
+                                  <span class="text-dark" style="width: 150px;">Singapore</span>
+                              </a>
+                            </li>
+                          </ul>
+                          <a class="btn btn-primary rounded-pill py-3 px-5" href="/">Go Back To Home</a>
+      
+                      
+                  </div>
+              </div>
+            </div>
+            <!-- Button - end -->
+
+          
+
+          </div>
+      </div>
+  </div>
+</div>
+<!-- 404 End -->
+
+
+    <!-- Footer Start -->
+        
+    <%- include('./common/footer') %>
+
+    <!-- Footer End -->
+    
+    
+
+    
+
+    </body>
+
+    </html>

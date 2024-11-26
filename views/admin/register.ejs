@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Pages / Register - Admin</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/travel/assets/img/favicon.png" rel="icon">
+  <link href="/travel/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/travel/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/travel/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/travel/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/travel/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/travel/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/travel/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/travel/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/travel/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="/" class="logo d-flex align-items-center w-auto">
+                  <img src="/travel/assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block">Admin Registration Form</span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                    <p class="text-center small">Enter your personal details to create account</p>
+                    <% if(error_msg.length>0) {%>
+                      <div class="alert alert-danger" role="alert"><%= error_msg %></div>
+                    <% } %>
+                  </div>
+                
+                  <div class="success-message">
+
+                  </div>
+                  <div class="error_message">
+
+                  </div>
+
+
+                  <form class="row g-3 needs-validation" id="form_data">
+                    
+                    <div class="col-12">
+                      <label for="yourName" class="form-label">Your Name</label>
+                      <input type="text" name="name" id="usernames" class="form-control name" id="yourName" required>
+                      <div id="usercheck" class="invalid-feedback">Please, enter your name!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Your Email</label>
+                      <input type="email" id="email" class="form-control email" id="" required>
+                      <div id="emailvalid" class="invalid-feedback">Please enter a valid Email adddress!</div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Your Phone Number</label>
+                      <input type="text" name="phone" class="form-control phone" id="yourEmail" required>
+                      <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="userpassword" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control password"  id="userpassword" placeholder="Enter Your Password" autocomplete="off">
+                      <span id="password_error" class="passworderror"></span>
+                      </div>
+                    
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" id="submitbtn" type="submit">Create Account</button>
+                    </div>
+                    <div class="col-12">
+                      <p class="small mb-0">Already have an account? <a href="/admin/login">Log in</a></p>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+
+              
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/travel/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/travel/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/travel/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/travel/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/travel/assets/vendor/quill/quill.min.js"></script>
+  <script src="/travel/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/travel/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/travel/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/travel/assets/js/main.js"></script>
+
+  <!-- jQuery library -->
+      
+  <script src= 
+  "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+  </script> 
+
+  <!-- Popper JS -->
+  <script src= 
+  "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"> 
+  </script>
+
+  <script>
+      $(document).ready(function(){
+        console.log('My jQuery');
+        $("#usercheck").hide();
+        let usernameError = true;
+        $("#usernames").keyup(function () {
+          validateUsername();
+        });
+
+        function validateUsername() {
+          let usernameValue = $("#usernames").val();
+          console.log('name : ',usernameValue);
+          if (usernameValue.length == "") {
+            $("#usercheck").show();
+            usernameError = false;
+            return false;
+          } else if (usernameValue.length < 3 || usernameValue.length > 10) {
+            $("#usercheck").show();
+            $("#usercheck").html(
+              "**length of username must be between 3 and 10"
+            );
+            usernameError = false;
+            return false;
+          } else {
+            $("#usercheck").hide();
+          }
+        }
+
+        // Validate Email
+        const email = document.getElementById("email");
+        email.addEventListener("blur", () => {
+          let regex =
+            /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+          let s = email.value;
+          console.log('email:',s);
+          if (regex.test(s)) {
+            email.classList.remove("is-invalid");
+            emailError = true;
+          } else {
+            email.classList.add("is-invalid");
+            emailError = false;
+          }
+        });
+
+        // Validate Password
+        $("#passcheck").hide();
+        $("#userpassword").keyup(function () {
+          validatePassword();
+        });
+        function validatePassword() {          
+          let passwordValue = $("#userpassword").val();
+          let uppercase = /[A-Z]/g;
+            let lowercase = /[a-z]/g;
+            let digit = /[0-9]/g;
+            let special_car = /[!@#$%^&*()_]/g;
+            if (passwordValue == '') {
+                console.log(passwordValue);
+                $('#password_error').text('Password is requried');
+                $('#password_error').css('color', 'crimson');
+                $('#userpassword').focus();
+                return false;
+            }
+            else if (!passwordValue.match(uppercase)) {
+                console.log(passwordValue);
+                $('#password_error').text('Please enter at least one capital letter.');
+                $('#password_error').css('color', 'crimson');
+                $('#userpassword').focus();
+                return false;
+            }
+            else if (!passwordValue.match(lowercase)) {
+                console.log(passwordValue);
+                $('#password_error').text('Please enter at least one small letter.');
+                $('#password_error').css('color', 'crimson');
+                $('#userpassword').focus();
+                return false;
+            }
+            else if (!passwordValue.match(digit)) {
+                console.log(passwordValue);
+                $('#password_error').text('Please enter at least one digit.');
+                $('#password_error').css('color', 'crimson');
+                $('#userpassword').focus();
+                return false;
+            }
+            else if (!passwordValue.match(special_car)) {
+                console.log(passwordValue);
+                $('#password_error').text('Please enter at least one special character.');
+                $('#password_error').css('color', 'crimson');
+                $('#userpassword').focus();
+                return false;
+            }
+            else if (passwordValue.length < 8) {
+                console.log(passwordValue);
+                $('#password_error').text('Please enter minimum eight character.');
+                $('#password_error').css('color', 'crimson');
+                $('#userpassword').focus();
+                return false;
+            }
+            else {
+                console.log(passwordValue);
+                console.log('complete');
+                $('#password_error').text('');
+                
+            }
+        }
+
+         // Submit button
+          $("#submitbtn").click(function () {
+            validateUsername();
+            validatePassword();            
+          if (
+            usernameError == true &&
+            passwordError == true &&
+            emailError == true
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+
+        $('#submitbtn').click(function(){
+          let adminnameValue = $(".name").val();
+          let adminemailValue = $(".email").val()
+          let adminphoneValue = $(".phone").val()
+          let adminpasswordValue = $(".password").val();
+          if(adminnameValue =='' && adminemailValue =='' && adminphoneValue =='' && adminpasswordValue =='' ){
+            $('.error_message').append(`            
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Oops!</strong>, Please fill all field.
+                      </button>
+                      </div>
+            
+            `)
+          }else{
+            $.ajax({
+                    type: 'POST',
+                    url: '/admin/register/admin/post',  
+                    data: JSON.stringify({ adminnameValue, adminemailValue, adminphoneValue, adminpasswordValue }),
+                    contentType: 'application/json',                    
+                    success: function (response) { 
+                      console.log(response)                     
+                      $('.success-message').append(`
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <strong>Hey!</strong>, `+response.data.name+`, congratulation, you successfully registered!!!.                      
+                      </div>
+                      `)
+                      clearInputs();
+                    },
+                    error: function (erorr) {
+                        console.log(erorr);
+                    }
+                    
+            })
+
+          }
+
+        })
+
+      })
+
+      function clearInputs() {
+              $('.name').val('');  
+              $('.email').val('');
+              $('.phone').val('');            
+              $('.password').val('');            
+            }
+
+
+  </script>
+
+</body>
+
+</html>
