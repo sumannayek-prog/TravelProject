@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./common/head') %>
+</head>
+
+<body>
+
+  <!-- Spinner Start -->
+
+<%- include('./common/spinner')%>
+
+  <!-- Spinner End -->
+
+  <!-- Topbar Start -->
+
+<%- include('./common/topbar')%>
+
+  <!-- Topbar End -->
+
+  <!-- Navbar & Hero Start -->
+  <div class="container-fluid position-relative p-0">
+  <%- include('./common/navbar') %>
+    </div>
+  <!-- Navbar & Hero End -->
+
+
+<!-- 404 Start -->
+<div class="container-fluid py-5" style="background: linear-gradient(rgba(19, 53, 123, 0.3), rgba(19, 53, 153, 0.3)); object-fit: cover;"> <br><br> <hr>
+              
+            <div class="container">
+              <table class="table table-bordered" style="color: black;">
+                <thead style="align-items: center; text-align: center;">
+                    <tr>
+                      <th>City</th>
+                      <th>Country</th>
+                      <th>Guide</th>
+                      <th>Details</th>
+                      <th>Hotel</th>
+                      <th>Days</th>
+                      <th>Adult</th>
+                      <th>Kid</th>
+                      <th>Amount</th>
+                      <th>Food</th>
+                      <th>Image</th>
+                      <th>Action</th>
+                  </tr>
+                </thead>  
+                
+                <% if (alldata.length > 0) {%>         
+                <tbody style="align-items: center; text-align: center;">
+                  <% for (let item of alldata)  {%>          
+                    <tr>
+                      <td><%= item.city %></td>
+                      <td><%= item.country %></td>
+                      <td><%= item.guide %></td>
+                      <td><%= item.para %></td>
+                      <td><%= item.hotel %></td>
+                      <td><%= item.days %></td>
+                      <td><%= item.adult %></td>
+                      <td><%= item.kid %></td>
+                      <td><%= item.amount %></td>
+                      <td><%= item.food %></td>
+                      <td style="align-items: center; text-align: center;"> <img src="/<%= item.image %>" height="50px" width="50px" alt="image"></td>
+
+                      <td style="align-items: center; text-align: center;">
+                      <a href="confirmbook<%= item._id %>" class="btn btn-primary" >Book</a>
+          
+                      </td>
+                  </tr> 
+  
+                  <%} } %> 
+    
+                    </td>
+                  
+                  </table>
+                  <a class="btn btn-primary rounded-pill py-3 px-5" href="/">Go Back To Home</a>
+              </div>
+
+            
+          </div>
+      </div>
+  </div>
+</div>
+<!-- 404 End -->
+
+
+    <!-- Footer Start -->
+        
+    <%- include('./common/footer') %>
+
+    <!-- Footer End -->
+    
+    
+
+    
+
+    </body>
+
+    </html>

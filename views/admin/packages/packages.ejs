@@ -1,0 +1,132 @@
+<body>
+  <!-- ======= Header ======= -->
+
+  <%- include('../common/head')%>
+
+  <!-- ======= Sidebar ======= -->
+
+  <%- include ('../common/navbar')%>
+
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Packages Page</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="packages">Packages List</a></li>          
+      </ol>        
+    </nav>
+  </div>
+
+<!-- End Page Title -->    
+  <div  class="container">
+    <a  class="btn btn-success" href="addPackages">Add Packages</a><hr>
+    <% if (success_msg.length>0) {%>
+      <div class="alert alert-success"><%= success_msg %></div>
+    <%}%>
+    <% if (error_msg.length>0) {%>
+      <div class="alert alert-danger"><%= error_msg %></div>
+    <%}%>
+    <div class="success_msg">
+
+    </div>
+    <div class="error_msg">
+
+    </div>
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+            <th style="text-align: center; align-items: center;" scope="col">Id</th>
+            <th scope="col">Amount</th>
+            <th style="align-items: center; text-align: center;" scope="col">Image</th>
+            <th scope="col">Location</th>
+            <th scope="col">Days</th>
+            <th scope="col">Person</th>
+            <th scope="col">Title</th>
+            <th scope="col">Hotel</th>
+            <th scope="col">Para</th>
+            <th scope="col">Guide</th>
+            <th style="align-items: center; text-align: center;">Status</th>              
+            <th colspan="2" scope="col" style="text-align: center;" >Action</th>
+          </tr>
+        </thead>  
+        <% let id = 0 
+        if (allPackagesdata.length > 0) {%>         
+        <tbody>
+          <% for (let item of allPackagesdata)  {%>          
+            <tr>
+            <th style="align-items: center; text-align: center;" scope="row"><%= ++id %></th>
+            <td><%= item.amount %></td>
+            <td style="align-items: center; text-align: center;"> <img src="/<%= item.image %>" height="50px" width="50px" alt="image"></td>
+            <td><%= item.location %></td>            
+            <td><%= item.days %></td>            
+            <td><%= item.person %></td>            
+            <td><%= item.title %></td>            
+            <td><%= item.hotel %></td>            
+            <td><%= item.para %></td>            
+            <td><%= item.guide %></td>            
+
+            <% if (item.status == 0 ) {%>
+                            
+            <td style="align-items: center; text-align: center;" >
+            <a href="deactivepackages<%= item._id %>"><i style="font-size: 2rem; color: rgb(177, 0, 0);" class="bi bi-hand-thumbs-down-fill" id="deactive"></i></a></td>
+
+            <%  }else {%>
+                
+            <td style="align-items: center; text-align: center;" >
+            <a href="activepackages<%= item._id %>"><i style="font-size: 2rem; color: rgb(8, 180, 2)"class="bi bi-hand-thumbs-up-fill" id="active"></i></a></td>
+
+            <% } %>
+
+
+            <td style="align-items: center; text-align: center;">
+            <a href="editpackages<%= item._id %>"><i class="fa-solid fa-pen-to-square" style="color: #0502c1; align-items: center; text-align: center;"></i></a>
+            </td>
+
+            <td style="align-items: center; text-align: center;">
+            <a href="deletepackages<%= item._id %>"><i class="fa-solid fa-trash" style="color: #e20325;"></i></a>
+
+            </td>
+          </tr> 
+          <%} } %>                 
+          
+          </table>
+        </div>
+  
+</main>
+<!-- End #main -->
+
+<!-- ======= Footer ======= -->
+
+<%- include ('../common/footer') %> 
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/admin/assets/vendor/chart.js/chart.umd.js"></script>
+<script src="/admin/assets/vendor/echarts/echarts.min.js"></script>
+<script src="/admin/assets/vendor/quill/quill.min.js"></script>
+<script src="/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="/admin/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/admin/assets/js/main.js"></script>
+
+  <!-- jQuery library -->
+    
+  <script src= 
+  "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+  </script> 
+
+  <!-- Popper JS -->
+  <script src= 
+  "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"> 
+  </script> 
+
+ 
+
+</body>
+

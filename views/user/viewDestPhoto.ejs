@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./common/head') %>
+</head>
+
+<body>
+
+  <!-- Spinner Start -->
+
+<%- include('./common/spinner')%>
+
+  <!-- Spinner End -->
+
+  <!-- Topbar Start -->
+
+<%- include('./common/topbar')%>
+
+  <!-- Topbar End -->
+
+  <!-- Navbar & Hero Start -->
+  <div class="container-fluid position-relative p-0">
+  <%- include('./common/navbar') %>
+    </div>
+  <!-- Navbar & Hero End -->
+
+ 
+
+<!-- readmore Start -->
+<div class="container-fluid py-5" style="background: linear-gradient(rgba(19, 53, 123, 0.3), rgba(19, 53, 153, 0.3)); object-fit: cover;">
+  <div class="container py-5 text-center">
+      <div class="row justify-content-center">
+        <div class="row g-6">
+          <!-- <div class="col-lg-6"> -->
+            <% for (let i of alldata) {%> 
+              <% let img = i.image
+              for (let j of img) { %>
+              <img src="/<%= j %>" style="height: 400px; width: 400px; padding: 5px; margin: 5px;" alt="">
+              <% } %>           
+              <h1 class="display-1"><%= i.city %></h1>
+              <h1 class="mb-4 text-dark"><%= i.country %></h1>   
+              
+            </div>
+          </div>
+          <a class="btn btn-primary rounded-pill py-3 px-5" href="/">Go Back To Home</a>                
+            <% } %>           
+
+      </div>
+  </div>
+</div>
+<!-- 404 End -->
+
+    
+
+    <!-- Footer Start -->
+        
+    <%- include('./common/footer') %>
+
+    <!-- Footer End -->
+    
+    
+
+    
+
+    </body>
+
+    </html>

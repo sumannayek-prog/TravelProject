@@ -1,0 +1,216 @@
+<body>
+    <!-- ======= Header ======= -->
+  
+    <%- include('../common/head')%>
+
+    <!-- ======= Sidebar ======= -->
+
+    <%- include ('../common/navbar')%>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>City Details Page</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="cities">City Details List</a></li>          
+        </ol>        
+      </nav>
+    </div>
+  
+  <!-- End Page Title -->    
+  <div  class="container">
+    <a  class="btn btn-success" href="addcities">Add Cities</a><hr>          
+            
+<button id="showdatact" class="btn btn-primary">Show</button>
+<% if (success_msg.length>0) {%>
+  <div class="alert alert-success"><%= success_msg %></div>
+<%}%>
+<% if (error_msg.length>0) {%>
+  <div class="alert alert-danger"><%= error_msg %></div>
+<%}%>
+<br /><hr>
+<div class="card-body">
+  <div class="table-responsive">
+      <table class="table table-striped table-bordered" id="sample_datact">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>City</th>
+                  <th>Country</th>
+                  <th>Guide</th>
+                  <th>Para</th>
+                  <th>Hotel</th>
+                  <th>Days</th>
+                  <th>Adult</th>
+                  <th>Kid</th>
+                  <th>Amount</th>
+                  <th>Food</th>
+                  <th>Image</th>
+                  <th>Status</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+  </div>
+</div>
+
+  </div>
+    
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+
+<%- include ('../common/footer') %> 
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/admin/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/admin/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/admin/assets/vendor/quill/quill.min.js"></script>
+  <script src="/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/admin/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/admin/assets/js/main.js"></script>
+
+    <!-- jQuery library -->
+      
+    <script src= 
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+    </script> 
+
+    <!-- Popper JS -->
+    <script src= 
+    "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"> 
+    </script> 
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    console.log('My jQuery');
+    // *****showdata*******//
+    $('#showdatact').click(function(){  
+      console.log('kk');    
+    $('#sample_datact').show()
+        AdminShowCityData()
+    })
+    function AdminShowCityData(){
+        $.ajax({
+            type:'GET',
+            url:'/admin/showcitypage',
+            dataType:'json',
+            success:function(response){
+              console.log('res',response);
+                {
+                    let showdatacity=''
+                    let count=0
+                    for(let i of response.allcities){
+                        if(i.status=='1'){
+                          showdatacity+=`
+                            <tr style="align-items: center; text-align: center;">
+                                <td>`+  ++count  +`</td>
+                                <td>`+ i.city +`</td>
+                                <td>`+ i.country +`</td>
+                                <td>`+ i.guide +`</td>
+                                <td>`+ i.para +`</td>                                
+                                <td>`+ i.hotel +`</td>                                
+                                <td>`+ i.days +`</td>                                
+                                <td>`+ i.adult +`</td>                                
+                                <td>`+ i.kid +`</td>                                
+                                <td>`+ i.amount +`</td>                                
+                                <td>`+ i.food +`</td>  
+                                <td style="align-items: center; text-align: center;">
+                                <img src="/`+ i.image +`" height="50px" width="50px" alt="image"></td>                              
+                                <td style="align-items: center; text-align: center;"><i class="fa-solid fa-thumbs-up" style="color:green; " id='activect' data-id='`+i._id+`'></i></td>                              
+                                //<td><button class='btn btn-danger' id='deletect' data-id='`+i._id+`'>Delete</button></td>
+                            </tr>
+                          ` 
+                        }else{
+                          showdatacity+=`
+                            <tr style="align-items: center; text-align: center;">
+                              <td>`+  ++count  +`</td>
+                                <td>`+ i.city +`</td>
+                                <td>`+ i.country +`</td>
+                                <td>`+ i.guide +`</td>
+                                <td>`+ i.para +`</td>                                
+                                <td>`+ i.hotel +`</td>                                
+                                <td>`+ i.days +`</td>                                
+                                <td>`+ i.adult +`</td>                                
+                                <td>`+ i.kid +`</td>                                
+                                <td>`+ i.amount +`</td>                                
+                                <td>`+ i.food +`</td>  
+                                <td style="align-items: center; text-align: center;">
+                                <img src="/`+ i.image +`" height="50px" width="50px" alt="image"></td>                               
+                                <td style="align-items: center; text-align: center;"><i class="fa-solid fa-thumbs-down" style="color:red; " id='deactivect' data-id='`+i._id+`'></i></td>                              
+                                //<td><button class='btn btn-danger' id='deletect' data-id='`+i._id+`'>Delete</button></td>
+                            </tr>
+                          ` 
+                            
+                        }
+                      
+                    }
+                  $('#sample_datact >tbody').html(showdatacity)
+                }
+            },
+            error:function(error){
+                console.log(error)
+            },
+        })
+    }
+    // ***deletedata*******//
+    $(document).on('click','#deletect',function(){
+        var id=$(this).data('id')
+        console.log(id)
+        $.ajax({
+            url:'/admin/deletect'+id,
+            method:'GET',
+            contentType:'application/json',
+            success:function(data){
+                console.log('delete data')
+                $('#showdatact').click()
+                $('#sample_datact').show()
+            }
+        })
+    })
+    // ****active******//
+    $(document).on('click','#activect',function(){
+      console.log('aa', );
+        let id=$(this).data('id')
+        $.ajax({
+            type:'GET',
+            url:'/admin/activect'+id,
+            dataType:'json',
+            success:function(){
+                console.log('deactive data')
+                $('#showdatact').click()
+                $('#sample_datact').show()
+            }
+        })
+    })
+    // ********deactive*******//
+    $(document).on('click','#deactivect',function(){
+        let id=$(this).data('id')
+        $.ajax({
+            type:'GET',
+            url:'/admin/deactivect'+id,
+            dataType:'json',
+            success:function(){
+                console.log('active data')
+                $('#showdatact').click()
+                $('#sample_datact').show()
+            }
+        })
+    })
+    
+})
+
+
+</script>
+</body>
+
